@@ -8,44 +8,52 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define DEF 0
-#define IN  1
-#define WIN 2
-#define FN  3
+#define BASE 0
+#define IN_L 1
+#define IN_R 2
+#define FUNC 3
+#define CADT 4
 
 / {
         keymap {
                 compatible = "zmk,keymap";
-                DEF {
+                BASE {
                         bindings = <
    &kp ESC   &kp Q &kp W &kp E &kp R &kp T     &kp Y &kp U &kp I     &kp O   &kp P    &kp LBKT
    &kp CAPS  &kp A &kp S &kp D &kp F &kp G     &kp H &kp J &kp K     &kp L   &kp SEMI &kp SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B     &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-   &mo WIN   &mo IN   &kp BSPC                          &kp SPACE   &mo IN      &mo WIN
+   &mo CADT  &kp BSPC    &mo IN_L              &mo IN_R    &kp SPACE &kp RET
                         >;
                 };
-                IN {
+                IN_L {
                         bindings = <
-   &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5        &kp N6        &kp N7     &kp N8       &kp N9       &kp N0    &kp BSLH
-   &trans    &trans &trans &trans &trans &kp MINUS     &kp EQUAL     &kp LEFT   &kp DOWN     &kp UP       &kp RIGHT &kp RBKT
-   &trans    &trans &trans &trans &trans &trans        &kp C_AL_CALC &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans    &trans
-   &mo FN    &trans       &kp LC(BSPC)                                                      &kp RET    &trans       &mo FN
+   &kp GRAVE &kp N1       &kp N2    &kp N3    &kp N4    &kp N5           &kp N6        &kp N7     &kp N8       &kp N9       &kp N0    &kp BSLH
+   &trans    &trans       &trans    &trans    &trans    &kp MINUS        &kp EQUAL     &kp LEFT   &kp UP       &kp DOWN     &kp RIGHT &kp RBKT
+   &trans    &kp LC(Z)    &kp LC(X) &kp LC(C) &kp LC(V) &kp LC(F)        &kp C_AL_CALC &kp C_MUTE &kp C_VOL_UP &kp C_VOL_DN &trans    &trans
+   &none     &kp LC(BSPC) &trans                                         &mo FUNC      &trans     &trans
                         >;
-                };
-                WIN {
+                IN_R {
                         bindings = <
-   &kp TAB  &trans    &trans &trans &trans &trans     &trans &trans &trans &trans &trans &kp DEL 
-   &trans   &trans    &trans &trans &trans &trans     &trans &trans &trans &trans &trans &kp RCTRL
-   &trans   &kp LCTRL &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
-   &trans   &kp LWIN  &kp LALT                        &trans        &kp RWIN      &trans
+   &kp GRAVE &kp N1       &kp N2    &kp N3    &kp N4    &kp N5           &kp N6        &kp N7     &kp N8       &kp N9       &kp N0    &kp BSLH
+   &trans    &trans       &trans    &trans    &trans    &kp MINUS        &kp EQUAL     &kp LEFT   &kp UP       &kp DOWN     &kp RIGHT &kp RBKT
+   &trans    &kp LC(Z)    &kp LC(X) &kp LC(C) &kp LC(V) &kp LC(F)        &kp C_AL_CALC &kp C_MUTE &kp C_VOL_UP &kp C_VOL_DN &trans    &trans
+   &none     &kp LC(BSPC) &mo FUNC                                       &trans        &trans     &trans
                         >;
                 };
-                FN {
+                FUNC {
                         bindings = <
    &kp F1 &kp F2 &kp F3    &kp F4   &kp F5   &kp F6      &trans &kp INS  &kp HOME &kp PG_UP &trans &trans
    &kp F7 &kp F8 &kp F9    &kp F10  &kp F11  &kp F12     &trans &kp DEL  &kp END  &kp PG_DN &trans &trans
    &trans &trans &kp LCTRL &kp LWIN &kp LALT &trans      &trans &kp RALT &kp RWIN &kp RCTRL &trans &trans
    &trans &trans &trans                                  &trans &trans   &trans
+                        >;
+                };
+                CADT {
+                        bindings = <
+   &kp TAB  &kp LCTRL &kp LWIN &kp LALT &trans &trans     &trans &trans &trans &trans &trans &kp DEL 
+   &trans   &trans    &trans   &trans   &trans &trans     &trans &trans &trans &trans &trans &kp RCTRL
+   &trans   &trans    &trans   &trans   &trans &trans     &trans &trans &trans &trans &trans &trans
+   &trans   &trans    &trans                              &trans &trans &trans
                         >;
                 };
         };
