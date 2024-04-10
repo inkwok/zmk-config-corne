@@ -11,7 +11,6 @@
 #define IN_L 1
 #define IN_R 2
 #define FUNC 3
-#define GAME 4
 
 &sk {
         release-after-ms = <2000>;
@@ -65,14 +64,6 @@
    &kp F7    &kp F8       &kp F9    &kp F10  &kp F11  &kp F12        &trans        &kp DEL    &kp END      &kp PG_DN    &trans    &trans
    &trans    &trans       &kp LCTRL &kp LWIN &kp LALT &trans         &trans        &kp RALT   &kp RWIN     &kp RCTRL    &trans    &trans
    &trans    &trans       &trans                                     &trans        &trans     &trans
-                        >;
-                };
-                GAME {
-                        bindings = <
-   &kp ESC   &kp Q &kp W &kp E &kp R &kp T   &trans &trans &trans &trans &trans &tog GAME
-   &kp LSHFT &kp A &kp S &kp D &kp F &kp G   &trans &trans &trans &trans &trans &trans
-   &kp LCTRL &kp Z &kp X &kp C &kp V &kp B   &trans &trans &trans &trans &trans &trans
-   &kp TAB   &kp SPACE   &kp H               &trans &trans &trans
                         >;
                 };
         };
