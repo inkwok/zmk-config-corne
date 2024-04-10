@@ -11,49 +11,54 @@
 #define IN_L 1
 #define IN_R 2
 #define FUNC 3
-#define CADT 4
+#define GAME 4
+
+&sk {
+        release-after-ms = <2000>;
+        /delete-property/ ignore-modifiers;
+};
 
 / {
         keymap {
                 compatible = "zmk,keymap";
                 BASE {
                         bindings = <
-   &kp ESC   &kp Q       &kp W      &kp E     &kp R     &kp T            &kp Y         &kp U      &kp I        &kp O        &kp P     &kp LBKT
-   &kp CAPS  &kp A       &kp S      &kp D     &kp F     &kp G            &kp H         &kp J      &kp K        &kp L        &kp SEMI  &kp SQT
-   &kp LSHFT &kp Z       &kp X      &kp C     &kp V     &kp B            &kp N         &kp M      &kp COMMA    &kp DOT      &kp FSLH  &kp RSHFT
-   &mo CADT  &kp BSPC    &mo IN_L                                        &mo IN_R      &kp SPACE  &kp RET
+   &kp ESC   &kp Q        &kp W     &kp E    &kp R    &kp T          &kp Y         &kp U      &kp I        &kp O        &kp P     &kp LBKT
+   &kp CAPS  &kp A        &kp S     &kp D    &kp F    &kp G          &kp H         &kp J      &kp K        &kp L        &kp SEMI  &kp SQT
+   &kp LSHFT &kp Z        &kp X     &kp C    &kp V    &kp B          &kp N         &kp M      &kp COMMA    &kp DOT      &kp FSLH  &kp RSHFT
+   &kp LWIN  &kp BSPC     &mo IN_L                                   &mo IN_R      &kp SPACE  &kp RET
                         >;
                 };
                 IN_L {
                         bindings = <
-   &kp GRAVE &kp N1       &kp N2             &kp N3    &kp N4      &kp N5         &kp N6        &kp N7     &kp N8       &kp N9       &kp N0    &kp BSLH
-   &trans    &kp LA(TAB)  &kp LA(LS(TAB))    &trans    &trans      &kp MINUS      &kp EQUAL     &kp LEFT   &kp UP       &kp DOWN     &kp RIGHT &kp RBKT
-   &trans    &kp LC(FSLH) &kp LC(B)          &kp LC(I) &kp LC(DOT) &kp LC(Y)      &kp C_AL_CALC &kp C_MUTE &kp C_VOL_UP &kp C_VOL_DN &trans    &trans
-   &none     &kp LC(BSPC) &trans                                                  &mo FUNC      &trans     &trans
+   &kp TAB   &kp N1       &kp N2    &kp N3   &kp N4   &kp N5         &kp N6        &kp N7     &kp N8       &kp N9       &kp N0    &kp BSLH
+   &kp GRAVE &sk LCTRL    &trans    &trans   &sk LALT &kp MINUS      &kp EQUAL     &kp LEFT   &kp UP       &kp DOWN     &kp RIGHT &kp RBKT
+   &trans    &trans       &trans    &trans   &trans   &trans         &kp C_AL_CALC &kp C_MUTE &kp C_VOL_UP &kp C_VOL_DN &trans    &trans
+   &trans    &kp LC(BSPC) &trans                                     &mo FUNC      &trans     &trans
                         >;
                 };
                 IN_R {
                         bindings = <
-   &kp GRAVE &kp N1       &kp N2             &kp N3    &kp N4      &kp N5         &kp N6        &kp N7     &kp N8       &kp N9       &kp N0    &kp BSLH
-   &trans    &kp LA(TAB)  &kp LA(LS(TAB))    &trans    &trans      &kp MINUS      &kp EQUAL     &kp LEFT   &kp UP       &kp DOWN     &kp RIGHT &kp RBKT
-   &trans    &kp LC(FSLH) &kp LC(B)          &kp LC(I) &kp LC(DOT) &kp LC(Y)      &kp C_AL_CALC &kp C_MUTE &kp C_VOL_UP &kp C_VOL_DN &trans    &trans
-   &none     &kp LC(BSPC) &mo FUNC                                       &trans        &trans     &trans
+   &kp TAB   &kp N1       &kp N2    &kp N3   &kp N4   &kp N5         &kp N6        &kp N7     &kp N8       &kp N9       &kp N0    &kp BSLH
+   &kp GRAVE &sk LCTRL    &trans    &trans   &sk LALT &kp MINUS      &kp EQUAL     &kp LEFT   &kp UP       &kp DOWN     &kp RIGHT &kp RBKT
+   &trans    &trans       &trans    &trans   &trans   &trans         &kp C_AL_CALC &kp C_MUTE &kp C_VOL_UP &kp C_VOL_DN &trans    &trans
+   &trans    &kp LC(BSPC) &mo FUNC                                   &trans        &trans     &trans
                         >;
                 };
                 FUNC {
                         bindings = <
-   &kp F1    &kp F2       &kp F3    &kp F4    &kp F5    &kp F6           &trans        &kp INS    &kp HOME     &kp PG_UP    &trans    &trans
-   &kp F7    &kp F8       &kp F9    &kp F10   &kp F11   &kp F12          &trans        &kp DEL    &kp END      &kp PG_DN    &trans    &trans
-   &trans    &trans       &kp LCTRL &kp LWIN  &kp LALT  &trans           &trans        &kp RALT   &kp RWIN     &kp RCTRL    &trans    &trans
-   &trans    &trans       &trans                                         &trans        &trans     &trans
+   &kp F1    &kp F2       &kp F3    &kp F4   &kp F5   &kp F6         &trans        &kp INS    &kp HOME     &kp PG_UP    &trans    &tog GAME
+   &kp F7    &kp F8       &kp F9    &kp F10  &kp F11  &kp F12        &trans        &kp DEL    &kp END      &kp PG_DN    &trans    &trans
+   &trans    &trans       &kp LCTRL &kp LWIN &kp LALT &trans         &trans        &kp RALT   &kp RWIN     &kp RCTRL    &trans    &trans
+   &trans    &trans       &trans                                     &trans        &trans     &trans
                         >;
                 };
-                CADT {
+                GAME {
                         bindings = <
-   &kp TAB  &kp LCTRL &kp LWIN &kp LALT &trans &trans     &trans &trans &trans &trans &trans &kp DEL 
-   &trans   &trans    &trans   &trans   &trans &trans     &trans &trans &trans &trans &trans &trans
-   &trans   &trans    &trans   &trans   &trans &trans     &trans &trans &trans &trans &trans &trans
-   &trans   &trans    &trans                              &trans &trans &trans
+   &kp ESC   &kp Q &kp W &kp E &kp R &kp T   &trans &trans &trans &trans &trans &tog GAME
+   &kp LSHFT &kp A &kp S &kp D &kp F &kp G   &trans &trans &trans &trans &trans &trans
+   &kp LCTRL &kp Z &kp X &kp C &kp V &kp B   &trans &trans &trans &trans &trans &trans
+   &kp TAB   &kp SPACE   &kp H               &trans &trans &trans
                         >;
                 };
         };
