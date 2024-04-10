@@ -18,6 +18,20 @@
         /delete-property/ ignore-modifiers;
 };
 
+&kscan0 {
+    debounce-press-ms = <10>;
+};
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+    };
+};
+
 / {
         keymap {
                 compatible = "zmk,keymap";
